@@ -1,0 +1,67 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+@layer utilities {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+        display: none;
+    }
+   /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+  }
+  }
+
+
+ 
+  
+  
+  @font-face {
+    font-family: "Gregular";
+    src: url("./fonts/gregular.ttf") format("truetype");
+    /* Add additional font weights and styles if needed */
+  }
+  
+  
+  @font-face {
+    font-family: "Gbold";
+    src: url("./fonts/gbold.ttf") format("truetype");
+    /* Add additional font weights and styles if needed */
+  }
+
+  
+
+  /* Hide scrollbar for Chrome, Safari, and Edge */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  /* Hide scrollbar for IE, Edge, and Firefox */
+  html {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+  
+  ::selection {
+    background-color: #0c0c0c; /* Replace with your desired background color */
+    color: white; /* Optional: Change the text color when selected */
+  }
+  
+  .heading {
+    font-family: "Gbold";
+  }
+  
+  .small {
+    font-family: "Gregular";
+  }
+  
+  
