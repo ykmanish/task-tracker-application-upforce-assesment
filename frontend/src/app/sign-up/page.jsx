@@ -71,11 +71,12 @@ const Page = () => {
     if (validateForm()) {
       try {
         // Send data to backend API
-        const res = await axios.post("http://localhost:5000/api/auth/register", {
-          username: formData.fullName,
-          email: formData.email,
-          password: formData.password,
-        });
+       const res = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/register`, {
+  username: formData.fullName,
+  email: formData.email,
+  password: formData.password,
+});
+
 
         // If registration is successful, store token in a cookie and redirect
         Cookies.set("token", res.data.token, { expires: 7 }); // Set token in cookie for 7 days
