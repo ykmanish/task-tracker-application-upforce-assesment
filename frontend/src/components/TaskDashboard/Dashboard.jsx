@@ -1,5 +1,7 @@
-'use client'
+'use client';
 import React, { useState } from "react";
+import { useRouter } from "next/navigation"; // Import useRouter for navigation
+import Cookies from "js-cookie"; // Import library to manipulate cookies
 import Modal from "../TaskModal/Modal";
 import DeleteModal from "./DeleteModal";
 import TaskList from "./TaskList";
@@ -10,6 +12,7 @@ import Pagination from "./Pagination";
 const Header = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchQuery, setSearchQuery] = useState("");
+  const router = useRouter(); // Initialize router
 
   const {
     tasks,
@@ -24,6 +27,11 @@ const Header = () => {
     setIsModalOpen,
     setIsDeleteModalOpen,
   } = useTasks();
+
+  const handleLogout = () => {
+    Cookies.remove("token"); // Remove the authentication cookie
+    router.push("/sign-in"); // Redirect to the login page
+  };
 
   return (
     <div className="max-w-6xl p-4 mx-auto">
@@ -45,13 +53,23 @@ const Header = () => {
               setCurrentPage(1); // Reset to first page on search
             }}
           />
+          <div className="flex items-center gap-3">
           <button
-            className="bg-[#9381ff] hover:bg-[#7d6aed] w-40 flex gap-2 justify-center items-center tracking-wide text-white small py-3 rounded-3xl"
+            className="bg-[#9381ff] hover:bg-[#7d6aed] w-32 flex gap-2 justify-center items-center tracking-wide text-white small py-3 rounded-3xl"
             onClick={() => openModal()}
           >
-            <img src="/add.svg" alt="add" className="w-4 h-4" />
+            <img src="/add.svg" alt="add" className="w-5 h-5" />
             New Task
           </button>
+          <button
+            className="bg-[#db2b39] hover:bg-red-700 w-32 flex gap-2 justify-center items-center tracking-wide text-white small py-3 rounded-3xl"
+            onClick={handleLogout}
+          >
+            <img src="/logout.svg" alt="logout" className="w-5 h-5" />
+            Logout
+          </button>
+          </div>
+          
         </div>
       </div>
 

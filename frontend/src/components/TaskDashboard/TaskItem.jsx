@@ -4,8 +4,8 @@ const TaskItem = ({ task, index, openModal, openDeleteModal }) => {
   return (
     <div className="bg-[#ffffff] p-2 rounded-[40px] border border-zinc-200 flex flex-col justify-center items-start w-full h-auto py-3">
       <div className="rounded-[35px] flex p-4 flex-col w-full h-auto py-3">
-        <div className="flex justify-start items-center">
-          <div className="grid grid-cols-3 lg:grid-cols-4  gap-3 items-center">
+        <div className="flex lg:justify-start items-center">
+          <div className="grid grid-cols-2 lg:grid-cols-4  gap-3 items-center">
             <h1 className="text-[14px] bg-green-100 w-28 py-3 flex flex-col justify-center items-center heading rounded-3xl text-zinc-800">
               <span className="text-xs small">Date Added</span>
               {new Date(task.dateAdded).toLocaleDateString()}
