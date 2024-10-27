@@ -27,24 +27,26 @@ const useTasks = () => {
     try {
       let response;
       if (edit) {
-        response = await axios.put(
-          `http://localhost:5000/api/tasks/${taskData._id}`,
-          taskData,
-          {
-            headers: {
-              Authorization: `Bearer ${Cookies.get("token")}`,
-              "Content-Type": "application/json",
-            },
-          }
-        );
-      } else {
-        response = await axios.post("http://localhost:5000/api/tasks", taskData, {
-          headers: {
-            Authorization: `Bearer ${Cookies.get("token")}`,
-            "Content-Type": "application/json",
-          },
-        });
-      }
+  response = await axios.put(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/tasks/${taskData._id}`,
+    taskData,
+    {
+      headers: {
+        Authorization: `Bearer ${Cookies.get("token")}`,
+        "Content-Type": "application/json",
+      },
+    }
+  );
+}
+ else {
+  response = await axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`, taskData, {
+    headers: {
+      Authorization: `Bearer ${Cookies.get("token")}`,
+      "Content-Type": "application/json",
+    },
+  });
+}
+
       const result = response.data;
       setIsModalOpen(false);
       if (edit) {
@@ -71,11 +73,12 @@ const useTasks = () => {
   const deleteTask = async () => {
     try {
       const taskToDelete = tasks[currentTask];
-      await axios.delete(`http://localhost:5000/api/tasks/${taskToDelete._id}`, {
-        headers: {
-          Authorization: `Bearer ${Cookies.get("token")}`,
-        },
-      });
+await axios.delete(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks/${taskToDelete._id}`, {
+  headers: {
+    Authorization: `Bearer ${Cookies.get("token")}`,
+  },
+});
+
       setTasks((prevTasks) => prevTasks.filter((_, index) => index !== currentTask));
       setIsDeleteModalOpen(false);
     } catch (error) {
