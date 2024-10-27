@@ -12,11 +12,11 @@ const useTasks = () => {
 
   const fetchTasks = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/tasks", {
-        headers: {
-          Authorization: `Bearer ${Cookies.get("token")}`,
-        },
-      });
+      const response = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/api/tasks`, {
+  headers: {
+    Authorization: `Bearer ${Cookies.get("token")}`,
+  },
+});
       setTasks(response.data);
     } catch (error) {
       console.error("Error fetching tasks:", error);
